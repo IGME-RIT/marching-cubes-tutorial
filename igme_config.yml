@@ -15,3 +15,5 @@ extra_resources:
   - "https://www.jvrb.org/past-issues/5.2008/1309"
   - "https://en.wikipedia.org/wiki/Marching_cubes"
   - "https://www.youtube.com/watch?v=LfttaAepYJ8"
+connections:
+  - "improved-3d-tutorial"
