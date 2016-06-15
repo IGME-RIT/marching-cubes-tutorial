@@ -3,7 +3,7 @@ author:
   name: IGME-RIT
   email:
   github: igme-rit
-description: In this demo we construct a Sphere using marching cubes algorithm. Waaat.
+description: In this demo we construct a Sphere using marching cubes algorithm.
 language: C++
 image:
   icon: https://cloud.githubusercontent.com/assets/10502938/13506660/28be0300-e14d-11e5-90e3-b194f14e52bd.PNG
