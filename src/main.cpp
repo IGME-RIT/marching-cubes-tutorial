@@ -137,18 +137,6 @@ struct stuff_for_drawing{
 //Since we are only drawing a single object, we need only 1 VBO. Thus we create an object of Stuff_for_drawing on a global scope
 stuff_for_drawing base;
 
-//This function checks if the passed value is true, if it is then it sets to false, else it sets to true.
-//If we had used bits to represent them, then we can simply use the XOR function.
-bool setTrue(bool var)
-{
-	if (var)
-		var = false;
-	else
-		var = true;
-
-	return var;
-}
-
 //This function pushes data onto the buffer we will later send to the GPU. It also updates the vertexcount to keep track of it.
 void pushToCPUBuffer(glm::vec3 a, glm::vec3 b, glm::vec3 c)
 {
@@ -251,58 +239,58 @@ void setup()
 				{
 					if (matrix[i][j][k].A1)
 					{
-						matrix[i][j][k].X = setTrue(matrix[i][j][k].X);
-						matrix[i][j][k].Y = setTrue(matrix[i][j][k].Y);
-						matrix[i][j][k].Z = setTrue(matrix[i][j][k].Z);
+						matrix[i][j][k].X = ! matrix[i][j][k].X;
+						matrix[i][j][k].Y = ! matrix[i][j][k].Y;
+						matrix[i][j][k].Z = ! matrix[i][j][k].Z;
 					}
 
 					if (matrix[i][j][k].B1)
 					{
-						matrix[i][j][k].X = setTrue(matrix[i][j][k].X);
-						matrix[i][j][k].Yx = setTrue(matrix[i][j][k].Yx);
-						matrix[i][j][k].Zx = setTrue(matrix[i][j][k].Zx);
+						matrix[i][j][k].X  = ! matrix[i][j][k].X;
+						matrix[i][j][k].Yx = ! matrix[i][j][k].Yx;
+						matrix[i][j][k].Zx = ! matrix[i][j][k].Zx;
 					}
 
 					if (matrix[i][j][k].C1)
 					{
-						matrix[i][j][k].Xy = setTrue(matrix[i][j][k].Xy);
-						matrix[i][j][k].Yx = setTrue(matrix[i][j][k].Yx);
-						matrix[i][j][k].Zxy = setTrue(matrix[i][j][k].Zxy);
+						matrix[i][j][k].Xy  = ! matrix[i][j][k].Xy;
+						matrix[i][j][k].Yx  = ! matrix[i][j][k].Yx;
+						matrix[i][j][k].Zxy = ! matrix[i][j][k].Zxy;
 					}
 
 					if (matrix[i][j][k].D1)
 					{
-						matrix[i][j][k].Xy = setTrue(matrix[i][j][k].Xy);
-						matrix[i][j][k].Y = setTrue(matrix[i][j][k].Y);
-						matrix[i][j][k].Zy = setTrue(matrix[i][j][k].Zy);
+						matrix[i][j][k].Xy = ! matrix[i][j][k].Xy;
+						matrix[i][j][k].Y  = ! matrix[i][j][k].Y;
+						matrix[i][j][k].Zy = ! matrix[i][j][k].Zy;
 					}
 
 					if (matrix[i][j][k].A2)
 					{
-						matrix[i][j][k].Xz = setTrue(matrix[i][j][k].Xz);
-						matrix[i][j][k].Yz = setTrue(matrix[i][j][k].Yz);
-						matrix[i][j][k].Z = setTrue(matrix[i][j][k].Z);
+						matrix[i][j][k].Xz = ! matrix[i][j][k].Xz;
+						matrix[i][j][k].Yz = ! matrix[i][j][k].Yz;
+						matrix[i][j][k].Z  = ! matrix[i][j][k].Z;
 					}
 
 					if (matrix[i][j][k].B2)
 					{
-						matrix[i][j][k].Xz = setTrue(matrix[i][j][k].Xz);
-						matrix[i][j][k].Yxz = setTrue(matrix[i][j][k].Yxz);
-						matrix[i][j][k].Zx = setTrue(matrix[i][j][k].Zx);
+						matrix[i][j][k].Xz  = ! matrix[i][j][k].Xz;
+						matrix[i][j][k].Yxz = ! matrix[i][j][k].Yxz;
+						matrix[i][j][k].Zx  = ! matrix[i][j][k].Zx;
 					}
 
 					if (matrix[i][j][k].C2)
 					{
-						matrix[i][j][k].Xyz = setTrue(matrix[i][j][k].Xyz);
-						matrix[i][j][k].Yxz = setTrue(matrix[i][j][k].Yxz);
-						matrix[i][j][k].Zxy = setTrue(matrix[i][j][k].Zxy);
+						matrix[i][j][k].Xyz = ! matrix[i][j][k].Xyz;
+						matrix[i][j][k].Yxz = ! matrix[i][j][k].Yxz;
+						matrix[i][j][k].Zxy = ! matrix[i][j][k].Zxy;
 					}
 
 					if (matrix[i][j][k].D2)
 					{
-						matrix[i][j][k].Xyz = setTrue(matrix[i][j][k].Xyz);
-						matrix[i][j][k].Yz = setTrue(matrix[i][j][k].Yz);
-						matrix[i][j][k].Zy = setTrue(matrix[i][j][k].Zy);
+						matrix[i][j][k].Xyz = ! matrix[i][j][k].Xyz;
+						matrix[i][j][k].Yz  = ! matrix[i][j][k].Yz;
+						matrix[i][j][k].Zy  = ! matrix[i][j][k].Zy;
 					}
 			}
 	}
