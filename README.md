@@ -1,35 +1,40 @@
-# Marching Cubes Tutorial
+# How to get up to this point -- Getting OpenGL and (other libraries) up and running
 
-In this demo we construct a Sphere using marching cubes algorithm.
+### Getting Visual Studio Project up and running
+ - Create an _empty Visual Studio project_
+ - Feel free to create your `main.cpp` and your `int main() { return 0; }`
+ - Create a folder named something like 'External Libraries' at the solution level (next to the .sln)
 
-# About
+### Download the _*pre-complied binaries*_ for GLFW and GLEW.
+ - NOTE: Download the 32 bit binaries for ease of setting up
+ - GLFW: http://www.glfw.org/download.html
+ - GLEW: http://glew.sourceforge.net/
+ - Extract the binaries put it in the 'External Libraries' folder
+ - name the respective folder as GLFW/GLEW (instead of something like `glfw-3.2.1.bin.WIN32`)
 
-Marching cubes is a algorithm to construct isosurfaces for oddly shaped objects, like fluids. It can be used to attain higher detail at lower memory cost.
+### Re-configuring our VS Project
+ - In the top left (tool bar thing), click on 'Project' -> 'Properties'
+ - Go to 'C/C++' -> 'General' -> 'Additional Include Directories'
+   - Locate the 'include' folders of GLFW and GLEW
+      - This should be something like `$(SolutionDir)External Libraries/GLFW/include` and `$(SolutionDir)External Libraries/GLEW/include`
+   - If you are successful, you will be able to call `#include <GL/glew.h>` or `#include <GLFW/glfw3.h>` in your `.cpp`s
+ - Go to 'Linker' -> 'General' -> 'Additional Library Directories'
+   - Locate the .lib files of GLFEW and GLEW
+      - Something like: `$(SolutionDir)External Libraries/GLEW/lib/Release/Win32` or `$(SolutionDir)External Libraries/GLFW/lib-vc2015`
+   - This makes sure the linker knows where to look to find these libraries
+ - Go to 'Linker' -> 'Input' -> 'Additional Dependencies'
+   - Add the following .lib in there:
+      - opengl32.lib
+      - glew32s.lib (OR glew32.lib if you don't want to use the static lib)
+      - glfw3.lib
+   - This makes sure the linker knows that we have some dependencies to resolve
+   
+### What next?
+ - Look through the main.cpp that's in this repo and slowly digest what's going on. You should be able to type all that code over and get a window up and running!
+   
+### Help!
 
-We divide the space into symmetric cubes. these cubes can be subdivided into smaller cubes for better resolution. This structure resembles that of a oct-tree. For each vertex of every cube, we check if that vertex constitutes a part of the surface. Since each vertex can either be a part or not, we have a combination of 2^8 different scenarios. But these can be reduced to 15 unique cases which  can be transformed to reproduce the other formations.
+#### Q: I have a ton of these
+![A ton of linker errors](https://i.imgur.com/GfkUrjs.png)
 
-These 8 values can be stored in 1 byte using each bit to represent a corner. In this example, we are using boolean variables instead, for ease of understanding.  
-
-In this example, all the logic is in the setup().
-
-# Setup
-
-In order to setup, run the following in a shell, then open the project in your preferred editor. Windows setup has been configured for use with Visual Studio.
-
-Windows:
-```
-cd path/to/folder
-setup.cmd
-```
-Linux:
-```
-cd path/to/folder
-./setup
-```
-
-# Credits
-
-For more reading, check out the following links:
-  - [Technical exploration of Adaptive Cube Tessalation](https://www.jvrb.org/past-issues/5.2008/1309)
-  - [Wikipedia overview of the Marching Cubes algorithm](https://en.wikipedia.org/wiki/Marching_cubes)
-  - [Visual demo for understanding the algorithm](https://www.youtube.com/watch?v=LfttaAepYJ8)
+#### A: Check if you're on x64 or x86 (x32)
